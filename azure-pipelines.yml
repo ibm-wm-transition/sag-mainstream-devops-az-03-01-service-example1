@@ -17,10 +17,10 @@ steps:
 
 # Service Principal Credentials
 - task: DownloadSecureFile@1
-  name: SPCredentials
-  displayName: 'Download SP credentials'
+  name: ACRSPCredentials
+  displayName: 'Download ACR SP credentials'
   inputs:
-    secureFile: 'sp.credentials.sh'
+    secureFile: 'acr.sp.credentials.sh'
 
 - script: |
     git clone  -b "master" --single-branch https://github.com/SoftwareAG/webmethods-sample-project-layout.git /tmp/fib

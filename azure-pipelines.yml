@@ -1,0 +1,31 @@
+# Service 1 build pipeline
+
+trigger: 
+  - main
+  - feature*
+
+pool:
+  name: WmDevOpsTutorialAgentsPool
+  vmImage: Canonical:0001-com-ubuntu-confidential-vm-focal:20_04-lts-gen2:latest
+
+steps:
+- script: chmod u+x ./buildScripts/*.sh
+  displayName: "Grant shell execution permissions"
+
+- script: ./buildScripts/01.prepareAgentMachine.sh
+  displayName: 'Install buildah'
+
+# Service Principal Credentials
+- task: DownloadSecureFile@1
+  name: SPCredentials
+  displayName: 'Download SP credentials'
+  inputs:
+    secureFile: 'sp.credentials.sh'
+
+- script: |
+    git clone  -b "master" --single-branch https://github.com/SoftwareAG/webmethods-sample-project-layout.git /tmp/fib
+    mkdir -p ./extra/is/packages
+    cp -r /tmp/fib/assets/IS/Packages/Fibonachi ./extra/is/packages/
+
+- script: ./buildScripts/02.build.sh
+  displayName: 'Build'

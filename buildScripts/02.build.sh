@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./scripts/setEnv.sh
+. ./buildScripts/setEnv.sh
 
 echo "Getting service principal credentials..."
 if [ ! -f "${ACRSPCREDENTIALS_SECUREFILEPATH}" ]; then

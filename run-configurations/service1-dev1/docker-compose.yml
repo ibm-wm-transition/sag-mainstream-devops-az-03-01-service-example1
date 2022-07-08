@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  msr-lean:
+    image: ${MY_MSR_CONTAINER_IMAGE}
+    ports:
+      - ${MY_PORT_PREFIX}55:5555
+    volumes:
+      - ${MY_MSR_LICENSE_FILE}:/tmp/license.xml
+    environment:
+      - SAG_IS_LICENSE_FILE=/tmp/license.xml

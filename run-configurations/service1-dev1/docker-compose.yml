@@ -8,6 +8,9 @@ services:
     volumes:
       - ${MY_MSR_LICENSE_FILE}:/tmp/license.xml
       - ./application.properties:/tmp/application.properties
+      - ../../is/packages/MyService1/:/opt/softwareag/IntegrationServer/packages/MyService1/
+      - ../../is/packages/MyService2/:/opt/softwareag/IntegrationServer/packages/MyService2/
+      - ../../is/packages/MyStartupConfig/:/opt/softwareag/IntegrationServer/packages/MyStartupConfig/
     environment:
       - SAG_IS_LICENSE_FILE=/tmp/license.xml
       - SAG_IS_CONFIG_PROPERTIES=/tmp/application.properties

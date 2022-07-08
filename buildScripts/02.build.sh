@@ -16,6 +16,9 @@ if [ -z ${AZ_ACR_SP_ID+x} ]; then
   exit 2
 fi
 
+echo "Dumping environment for demo purposes"
+env | sort
+
 echo "Logging in to repository ${MY_AZ_ACR_URL}"
 buildah login -u "${AZ_ACR_SP_ID}" -p "${AZ_ACR_SP_SECRET}" "${MY_AZ_ACR_URL}"  || exit 3
 

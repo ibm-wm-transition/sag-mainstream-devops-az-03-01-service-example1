@@ -12,7 +12,10 @@ steps:
 - script: chmod u+x ./buildScripts/*.sh
   displayName: "Grant shell execution permissions"
 
-- script: ./buildScripts/01.prepareAgentMachine.sh
+- script: ./buildScripts/01.setJobInitialVariables.sh
+  displayName: 'Set job variables'
+
+- script: ./buildScripts/02.prepareAgentMachine.sh
   displayName: 'Install buildah'
 
 # Service Principal Credentials
@@ -27,5 +30,8 @@ steps:
     mkdir -p ./extra/is/packages
     cp -r /tmp/fib/assets/IS/Packages/Fibonachi ./extra/is/packages/
 
-- script: ./buildScripts/02.build.sh
+- script: ./buildScripts/03.getDependencies.sh
+  displayName: 'Get dependencies'
+
+- script: ./buildScripts/04.build.sh
   displayName: 'Build'

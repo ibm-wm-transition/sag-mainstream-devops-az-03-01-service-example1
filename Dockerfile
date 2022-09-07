@@ -4,3 +4,4 @@ FROM ${__base_image}
 COPY ./is/packages/MyService1/ ${SAG_HOME}/IntegrationServer/packages/MyService1/
 COPY ./is/packages/MyService2/ ${SAG_HOME}/IntegrationServer/packages/MyService2/
 COPY ./is/packages/MyStartupConfig/ ${SAG_HOME}/IntegrationServer/packages/MyStartupConfig/
+COPY ./extra/is/packages/Fibonachi/ ${SAG_HOME}/IntegrationServer/packages/Fibonachi/

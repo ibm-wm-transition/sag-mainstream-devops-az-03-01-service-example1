@@ -28,7 +28,7 @@ buildah bud \
   --format docker \
   -t "${OUR_SERVICE_TAG_BASE}" || exit 4
 
-crtTag="${OUR_SERVICE_TAG_BASE}:br-${BUILD_SOURCEBRANCHNAME}-${MY_d}"
+crtTag="${OUR_SERVICE_TAG_BASE}::Base-${AZ_BASE_IMAGE_FIXES_TAG}-br-${BUILD_SOURCEBRANCHNAME}-${JOB_DATETIME}"
 
 echo "Tagging ${OUR_SERVICE_TAG_BASE} to ${crtTag}"
 buildah tag "${OUR_SERVICE_TAG_BASE}" "${crtTag}"
